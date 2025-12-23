@@ -49,6 +49,49 @@ int FIFO(int ref[], int n, int f) {
     return faults;
 }
 
+/* ================= LRU ================= */
+int LRU(int ref[], int n, int f) {
+    int frames[20], last[20];
+    int i, j, faults = 0;
+
+    for (i = 0; i < f; i++) {
+        frames[i] = -1;
+        last[i] = -1;
+    }
+
+    printf("\n--- LRU Algorithm ---\n");
+
+    for (i = 0; i < n; i++) {
+        int page = ref[i];
+        int idx = findPage(frames, f, page);
+
+        printf("Request: %d -> ", page);
+
+        if (idx != -1) {
+            last[idx] = i;
+            printf("HIT   | ");
+        } else {
+            faults++;
+
+            int rep = 0, minVal = last[0];
+            for (j = 1; j < f; j++) {
+                if (last[j] < minVal) {
+                    minVal = last[j];
+                    rep = j;
+                }
+            }
+
+            frames[rep] = page;
+            last[rep] = i;
+
+            printf("FAULT | ");
+        }
+
+        printFrames(frames, f);
+    }
+
+    return faults;
+}
 
 
 /* ================= MAIN ================= */
