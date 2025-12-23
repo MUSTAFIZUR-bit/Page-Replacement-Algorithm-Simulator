@@ -93,6 +93,57 @@ int LRU(int ref[], int n, int f) {
     return faults;
 }
 
+/* ================= OPTIMAL ================= */
+int Optimal(int ref[], int n, int f) {
+    int frames[20];
+    int i, j, faults = 0;
+
+    for (i = 0; i < f; i++)
+        frames[i] = -1;
+
+    printf("\n--- Optimal Algorithm ---\n");
+
+    for (i = 0; i < n; i++) {
+        int page = ref[i];
+
+        printf("Request: %d -> ", page);
+
+        if (findPage(frames, f, page) != -1) {
+            printf("HIT   | ");
+            printFrames(frames, f);
+            continue;
+        }
+
+        faults++;
+
+        int rep = -1, farthest = -1;
+
+        for (j = 0; j < f; j++) {
+            int k, found = 0;
+            for (k = i + 1; k < n; k++) {
+                if (frames[j] == ref[k]) {
+                    if (k > farthest) {
+                        farthest = k;
+                        rep = j;
+                    }
+                    found = 1;
+                    break;
+                }
+            }
+            if (!found) {
+                rep = j;
+                break;
+            }
+        }
+
+        frames[rep] = page;
+
+        printf("FAULT | ");
+        printFrames(frames, f);
+    }
+
+    return faults;
+}
 
 /* ================= MAIN ================= */
 int main() {
