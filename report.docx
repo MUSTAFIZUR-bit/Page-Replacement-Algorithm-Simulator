@@ -1,0 +1,159 @@
+Project Title: Page Replacement Algorithm Simulator (FIFO, LRU & Optimal)
+Course: CSE316 – Operating Systems
+Student Roll No.: 18
+1. Project Overview
+In an operating system, page replacement algorithms are used to manage memory efficiently when a page fault occurs and the physical memory frames are full. The operating system must decide which page to remove from memory to make space for a new page.
+This project, Page Replacement Algorithm Simulator, is a console-based simulation written in C that demonstrates the working of three fundamental page replacement algorithms:
+•	First-In First-Out (FIFO)
+•	Least Recently Used (LRU)
+•	Optimal Page Replacement
+The simulator allows the user to input:
+•	Number of page references
+•	Reference string
+•	Number of memory frames
+The program then simulates each algorithm step-by-step, displaying HIT / FAULT status and the current frame contents, and finally compares the total page faults produced by each algorithm.
+Key Outcomes
+•	Understand page replacement strategies
+•	Compare algorithm efficiency
+•	Analyze page fault behavior
+•	Visualize memory frame changes
+________________________________________
+1.1 AI-Guided Problem Analysis
+AI Analysis Provided:
+•	Concept Clarification: Explained the need for page replacement during page faults when frames are full.
+•	Algorithm Breakdown: Suggested separating FIFO, LRU, and Optimal algorithms into independent functions.
+•	Beginner-Friendly Approach: Recommended simple arrays, loops, and procedural logic for better understanding.
+This guidance helped in implementing a clean, beginner-level C program that accurately simulates OS page replacement behavior.
+
+________________________________________
+
+2. Module-Wise Breakdown
+Module 1: Input & Initialization Module
+•	Accepts number of references
+•	Accepts reference string
+•	Accepts number of frames
+•	Initializes memory frames with empty values
+Module 2: Page Replacement Algorithms Module
+•	Implements FIFO algorithm
+•	Implements LRU algorithm
+•	Implements Optimal algorithm
+•	Tracks page hits and faults
+•	Displays frame contents after each request
+Module 3: Result Analysis Module
+•	Calculates total page faults for each algorithm
+•	Displays final comparison summary
+________________________________________
+3. Functionalities
+Module 1 Functionalities
+•	Read reference string from user
+•	Read number of frames
+•	Validate input size
+Module 2 Functionalities
+•	Detect page hits
+•	Handle page faults
+•	Replace pages according to algorithm rules
+•	Display memory frames step-by-step
+•	Module 3 Functionalities
+•	Count total page faults
+•	Compare FIFO, LRU, and Optimal results
+•	Print summary output
+•	Output deadlocked process list
+Module 3 Functionalities
+•	Ask user to select a process to abort
+•	Perform real recovery: free resources of aborted process
+•	Recheck for remaining deadlock
+•	Print final system status
+________________________________________
+4. Technology Used
+Programming Language
+•	C (Procedural Programming Language)
+Libraries Used
+•	<stdio.h> – Input and output operations
+•	<limits.h> – Used for optimal and LRU comparisons
+Tools
+•	GCC compiler
+•	Command Prompt / Terminal
+•	MS Word for documentation
+
+5. Flow Diagram0 
+Flow Diagram Explanation
+The flow diagram represents the complete working of the system.
+It starts with user input, followed by deadlock detection using matrices.
+If deadlock is detected, recovery is performed by aborting a process.
+The detection algorithm is re-executed to ensure system safety.
+6. Algorithm / Methodology
+FIFO Algorithm
+•	Pages are replaced in the order they entered memory.
+•	The oldest page is removed first.
+LRU Algorithm
+•	Replaces the page that has not been used for the longest time.
+•	Tracks last access time of each page.
+Optimal Algorithm
+•	Replaces the page that will not be used for the longest time in the future.
+•	Requires future reference knowledge.
+General Steps
+1.	Initialize all frames as empty
+2.	For each page request:
+o	Check for HIT or FAULT
+o	If FAULT and frames are full:
+	Apply replacement algorithm
+3.	Count page faults
+4.	Display results
+ 
+Time & Space Complexity
+w 
+7. GitHub Revision Tracking
+Repository Name:
+Page-Replacement-Algorithm-Simulator
+Commit History:
+•	Initial project setup
+•	Added FIFO algorithm
+•	Added LRU algorithm
+•	Added Optimal algorithm
+•	Testing and output formatting
+•	Documentation completed
+Repository Name: Automated-Deadlock-Detection-OS-Project
+GitHub Link: https://github.com/Omhari66/Automated-Deadlock-Detection-OS-Project
+
+
+8. Conclusion & Future Scope
+Conclusion
+This project successfully demonstrates the working of FIFO, LRU, and Optimal page replacement algorithms. By simulating page requests and memory frames, the project helps in understanding how operating systems manage memory and minimize page faults.
+The comparison clearly shows that:
+•	FIFO is simple but inefficient
+•	LRU performs better with locality of reference
+•	Optimal gives the minimum possible page faults
+Future Scope
+•	Add LFU algorithm
+•	Add graphical visualization
+•	Simulate real-time paging
+•	Compare performance with different frame sizes
+
+APPENDIX
+Appendix A: Problem Statement
+Design and implement a simulator that demonstrates page replacement algorithms used by operating systems. The system should allow users to compare FIFO, LRU, and Optimal algorithms based on page fault count.
+________________________________________
+Appendix B: Final C Code
+ 
+ 
+ 
+
+
+Experimental Results
+Test Case 1
+Input:
+Reference string: 1 2 3 2 4
+Frames: 3
+Output:
+FIFO > LRU > Optimal (in fault count)
+ 
+Test Case 2
+Demonstrates better performance of LRU over FIFO due to locality of reference.
+Test Case 3
+Optimal algorithm produces minimum page faults, validating correctness.
+________________________________________
+9. References
+•	Silberschatz, Galvin, Gagne – Operating System Concepts
+•	Tanenbaum – Modern Operating Systems
+•	William Stallings – Operating Systems: Internals and Design Principles
+
